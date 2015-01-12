@@ -1,0 +1,21 @@
+<h1>Todo!</h1>
+
+<div>
+  TODO
+  How do you split the list of todos into completed
+  and unfinished so that the unfinished go first?
+</div>
+
+<ul>
+  <% @todos.each_with_index do |todo, i| %>
+    <li>
+      <div style='<%= todo.complete? ?  "text-decoration: line-through;" : "" %>'><%= todo.content %></div>
+      <a href="/completed?i=<%= i %>">mark as <%= todo.complete? ? 'unfinished' : 'completed' %></a>
+    </li>
+  <% end %>
+</ul>
+
+<form action='/new' method='post'>
+  <textarea name='content'></textarea>
+  <input type='submit'>
+</form>
